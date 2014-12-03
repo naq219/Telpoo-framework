@@ -15,7 +15,7 @@ import com.telpoo.frame.object.BaseObject;
 public class Mlog {
 	protected static Mlog instance;
 	private static String TAG = "telpoo";
-	public static Boolean isLog = null;
+	public static Boolean isLog = true;
 
 	public static Mlog getInstance() {
 		if (instance == null)
@@ -26,7 +26,7 @@ public class Mlog {
 	public static void D(String info) {
 
 		if (isLog == null || isLog == false)
-			return;
+		//	return;
 
 		Log.d(TAG, info + "");
 
@@ -34,21 +34,21 @@ public class Mlog {
 
 	public static void D(int info) {
 		if (isLog == null || isLog == false)
-			return;
+		//	return;
 		Log.d(TAG, info + "");
 
 	}
 
 	public static void D(boolean info) {
 		if (isLog == null || isLog == false)
-			return;
+		//	return;
 		Log.d(TAG, info + "");
 
 	}
 
 	public static void D(Context context, String info) {
 		if (isLog == null || isLog == false)
-			return;
+		//	return;
 		if (info != null) {
 			Log.d(TAG, context.getClass().getSimpleName() + " - " + info);
 		}
@@ -56,7 +56,7 @@ public class Mlog {
 
 	public static void E(String info) {
 		if (isLog == null || isLog == false)
-			return;
+		//	return;
 		if (info != null) {
 			Log.e("NAQ", info);
 		}
@@ -64,7 +64,7 @@ public class Mlog {
 
 	public static void I(String info) {
 		if (isLog == null || isLog == false)
-			return;
+		//	return;
 		if (info != null) {
 			Log.i(TAG, info);
 		}
@@ -72,7 +72,7 @@ public class Mlog {
 
 	public static void T(String info) {
 		if (isLog == null || isLog == false)
-			return;
+		//	return;
 		if (info != null) {
 			Log.i(TAG, info);
 		}
@@ -80,7 +80,7 @@ public class Mlog {
 
 	public static void w(String info) {
 		if (isLog == null || isLog == false)
-			return;
+		//	return;
 		if (info != null) {
 			Log.w(TAG, info);
 		}

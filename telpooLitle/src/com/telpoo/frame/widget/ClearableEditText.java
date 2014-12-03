@@ -24,6 +24,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -42,6 +43,7 @@ public class ClearableEditText extends EditText implements OnTouchListener,
 
 	public interface Listener {
 		void didClearText();
+		void onImeBack();
 	}
 
 	public void setListener(Listener listener) {
@@ -140,9 +142,17 @@ public class ClearableEditText extends EditText implements OnTouchListener,
 		addTextChangedListener(new TextWatcherAdapter(this, this));
 	}
 
-	protected void setClearIconVisible(boolean visible) {
+	public void setClearIconVisible(boolean visible) {
 		Drawable x = visible ? xD : null;
 		setCompoundDrawables(getCompoundDrawables()[0],
 				getCompoundDrawables()[1], x, getCompoundDrawables()[3]);
 	}
+	
+	@Override
+    public boolean onKeyPreIme(int keyCode, KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+            if (listener != null) listener.onImeBack();
+        }
+        return super.dispatchKeyEvent(event);
+    }
 }
