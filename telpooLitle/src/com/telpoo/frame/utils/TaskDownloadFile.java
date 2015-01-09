@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.concurrent.ExecutorService;
@@ -70,7 +71,8 @@ public class TaskDownloadFile extends AsyncTask<String, String, String> {
 		int count;
 		try {
 			URL url = new URL(f_url[0]);
-			URLConnection conection = url.openConnection();
+			HttpURLConnection conection = (HttpURLConnection) url.openConnection();
+			conection.setInstanceFollowRedirects(true);
 			conection.connect();
 			// getting file length
 			int lenghtOfFile = conection.getContentLength();

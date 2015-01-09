@@ -57,6 +57,14 @@ public class BUtils {
 		editor.commit();
 
 	}
+	
+	public static void saveIntSPR(String key, int value, Context context) {
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+		SharedPreferences.Editor editor = preferences.edit();
+		editor.putInt(key, value);
+		editor.commit();
+
+	}
 
 	public static int getIntSPR(String key, Context context) {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
