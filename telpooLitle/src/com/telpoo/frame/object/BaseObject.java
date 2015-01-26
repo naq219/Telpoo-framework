@@ -3,6 +3,10 @@
  */
 package com.telpoo.frame.object;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
 import android.content.ContentValues;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -15,6 +19,17 @@ public class BaseObject implements Parcelable {
 
 	protected ContentValues params = null;
 
+	public ArrayList<String> getKeys(){
+		if(params==null) return null;
+		
+		Iterator<Entry<String, Object>> interrator = params.valueSet().iterator();
+		ArrayList<String> listKey=new ArrayList<String>();
+		while (interrator.hasNext()) {
+		listKey.add(interrator.next().getKey());
+		}
+		return listKey;
+	}
+	
 	public void setParams(ContentValues params) {
 		this.params = params;
 	}
@@ -64,14 +79,17 @@ public class BaseObject implements Parcelable {
 
 	}
 
-	public int getInt(String key) {
+	public Integer getInt(String key) {
 		if (params != null)
 			if (params.containsKey(key)) {
-
-				return Integer.parseInt(params.getAsString(key));
+				Integer vl= params.getAsInteger(key);
+				if(vl==null) return Integer.MIN_VALUE;
+				return vl;
 			}
 		return Integer.MIN_VALUE;
 	}
+	
+	
 	
 
 	public double getDouble(String key) {

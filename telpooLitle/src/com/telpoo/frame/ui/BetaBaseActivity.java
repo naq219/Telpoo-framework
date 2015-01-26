@@ -2,12 +2,10 @@ package com.telpoo.frame.ui;
 
 import java.util.ArrayList;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.widget.Toast;
 
 import com.telpoo.frame.model.BaseModel;
@@ -25,11 +23,6 @@ public class BetaBaseActivity extends Activity implements ModelListener {
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
-		// Display display = getWindowManager().getDefaultDisplay();
-		// Point size = new Point();
-		// display.getSize(size);
-		// screenWidth = size.x;
-		// screenHeight = size.y;
 		if (model == null) {
 			model = new BaseModel();
 			model.setModelListener1(this);
@@ -80,7 +73,8 @@ public class BetaBaseActivity extends Activity implements ModelListener {
 	}
 
 	protected void showToast(int msg) {
-		Toast.makeText(getBaseContext(), getString(msg), Toast.LENGTH_SHORT).show();
+		Toast.makeText(getBaseContext(), getString(msg), Toast.LENGTH_SHORT)
+				.show();
 	}
 
 	protected void showToast(String msg) {
@@ -88,6 +82,7 @@ public class BetaBaseActivity extends Activity implements ModelListener {
 	}
 
 	public void showProgressDialog(Context context, String message) {
+		
 		closeProgressDialog();
 
 		loadingProgress = new ProgressDialog(context);
