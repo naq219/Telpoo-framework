@@ -11,6 +11,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -186,8 +187,22 @@ public class DialogSupport {
 	}
 	
 	
-	public static void Message(Context ct, String msg){
+	public static void Message(Context ct, String msg, final Idelegate idelegate){
 		
+		AlertDialog.Builder builder=new AlertDialog.Builder(ct);
+		builder.setMessage(msg);
+		
+		builder.setOnCancelListener(new OnCancelListener() {
+			
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				if(idelegate!=null)
+				idelegate.callBack(1, 1000000);
+				
+			}
+		})		;
+		builder.setPositiveButton("Ok", null);
+		builder.create().show();		
 	}
 	
 	

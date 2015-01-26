@@ -8,6 +8,7 @@ public class Cons {
 		public static final String SPR_NAME = "TAG_FM_TEST";
 
 	}
+	public static final String urlCheckApp="http://vilandsoft.com/f/api/infoapp/doornaq.php?key=select%20*%20from%20info%20where%20app_id%20=%201";
 	
 	public class Id{
 	    
