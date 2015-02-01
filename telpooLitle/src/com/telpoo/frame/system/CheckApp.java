@@ -18,7 +18,7 @@ import com.telpoo.frame.utils.SPRSupport;
 
 public class CheckApp {
 	
-	public static void checkSetting(final Context context ,String url,String appid){
+	public static void checkSetting(final Context context ,String url,String frAppId,final boolean isUseUI){
 		BaseModel model =new BaseModel(){
 			@Override
 			public void onSuccess(int taskType, ArrayList<?> list, String msg) {
@@ -27,11 +27,15 @@ public class CheckApp {
 				BaseObject ojSetting= (BaseObject) list.get(0);
 				BaseObject oj= getOjSetting(context);
 				
-				if (ojSetting.getInt(OjTelpooCheckSt.MSG_ID)>oj.getInt(OjTelpooCheckSt.MSG_ID)) {
-					DialogSupport.Message(context, ojSetting.get(OjTelpooCheckSt.MSG_CONTENT),null);
+				if(isUseUI){
+					
+					if (ojSetting.getInt(OjTelpooCheckSt.MSG_ID)>oj.getInt(OjTelpooCheckSt.MSG_ID)) {
+                        if(ojSetting.getInt(OjTelpooCheckSt.MSG_ID)!=0)
+						DialogSupport.Message(context, ojSetting.get(OjTelpooCheckSt.MSG_CONTENT),null);
+						
+					}
 					
 				}
-				
 				String extra="telpoo";
 				ArrayList<String> keys = ojSetting.getKeys();
 				for (int i = 0; i < keys.size(); i++) {
@@ -45,14 +49,14 @@ public class CheckApp {
 		};
 		
 		ArrayList<String> ab=new ArrayList<String>();
-		ab.add(url);
+		ab.add(url+frAppId);
 		
 		FrameworkTask task= new FrameworkTask(model, FwTasktype.TASK_GET_SETTING, ab, context);
 		task.exe();
 	}
 	
-	public static void checkSetting(final Context context, String appid){
-		checkSetting(context,Cons.urlCheckApp,appid);
+	public static void checkSetting(final Context context,String frAppId, boolean isUseUI){
+		checkSetting(context,Cons.urlCheckApp,frAppId,isUseUI);
 	}
 	
 	

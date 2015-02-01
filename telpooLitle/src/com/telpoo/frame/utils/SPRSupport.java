@@ -30,6 +30,19 @@ public class SPRSupport {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		return preferences.getInt(key, 0);
 	}
+    public static int getAsInt(String key, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+       String k= preferences.getString(key, Cons.Defi.SPR_GET_FALL);
+        int a=Integer.MIN_VALUE;
+        try {
+            a= Integer.parseInt(k);
+        }
+        catch (Exception e){
+
+        };
+
+        return a;
+    }
 
 	public static String getString(String key, Context context) {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
