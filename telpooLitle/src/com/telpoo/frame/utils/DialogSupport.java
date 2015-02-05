@@ -204,6 +204,34 @@ public class DialogSupport {
 		builder.setPositiveButton("Ok", null);
 		builder.create().show();		
 	}
+
+    public static void simpleYesNo(Context context, String textBtnYes, String textBtnNo, String title,String message, final Idelegate idelegate){
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        if(title!=null&&title.length()>0)
+            builder.setTitle(title);
+
+        if(message!=null&&message.length()>0)
+            builder.setMessage(message);
+
+        builder.setPositiveButton(textBtnYes,new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                idelegate.callBack(1,1);
+
+            }
+        });
+
+        builder.setNegativeButton(textBtnNo,new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                idelegate.callBack(0,0);
+            }
+        });
+
+        builder.create().show();
+
+
+    }
 	
 	
 }
