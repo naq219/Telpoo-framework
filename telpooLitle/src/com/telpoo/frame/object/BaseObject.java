@@ -3,13 +3,13 @@
  */
 package com.telpoo.frame.object;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map.Entry;
-
 import android.content.ContentValues;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 /**
  * @author NAQ219
@@ -29,7 +29,18 @@ public class BaseObject implements Parcelable {
 		}
 		return listKey;
 	}
-	
+
+    public BaseObject clone(){
+        BaseObject ojNew=new BaseObject();
+
+        if(params!=null){
+            ContentValues par=new ContentValues(params);
+            ojNew.setParams(par);
+        }
+
+        return ojNew;
+    }
+
 	public void setParams(ContentValues params) {
 		this.params = params;
 	}
