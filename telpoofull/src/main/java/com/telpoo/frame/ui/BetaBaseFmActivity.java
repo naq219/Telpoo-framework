@@ -15,10 +15,10 @@ import java.util.Stack;
 
 public class BetaBaseFmActivity extends BetaBaseActionbarActivity {
 	protected HashMap<String, Stack<Fragment>> mStacks;
-	private String mCurrentTab;
-	private BetaBaseFragment currentFragment = null;
-	private int resource_home;
-	private String toastAskExit;
+    protected String mCurrentTab;
+    protected BetaBaseFragment currentFragment = null;
+	protected int resource_home;
+    protected String toastAskExit;
 	String[] TabIds;
 	private String TAG = BetaBaseFmActivity.class.getSimpleName();
 
@@ -28,6 +28,10 @@ public class BetaBaseFmActivity extends BetaBaseActionbarActivity {
 		this.resource_home = resource_home;
 		this.toastAskExit = toastAskExit;
 	}
+
+    public BetaBaseFmActivity(){
+
+    }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
