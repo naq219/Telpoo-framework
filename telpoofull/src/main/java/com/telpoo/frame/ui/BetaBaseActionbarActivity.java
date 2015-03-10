@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
 
@@ -205,6 +206,18 @@ public class BetaBaseActionbarActivity extends ActionBarActivity implements Mode
 	        }
 	    }
 	}
+
+    public void setTitleActionBar(String title) {
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(title);
+    }
+
+
+    public void setSubTitleActionBar(String subtitle) {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setSubtitle(subtitle);
+    }
 	
 	
 	
